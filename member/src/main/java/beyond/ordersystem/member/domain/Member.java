@@ -4,8 +4,6 @@ import beyond.ordersystem.common.domain.Address;
 import beyond.ordersystem.common.domain.BaseTimeEntity;
 import beyond.ordersystem.member.dto.MemberPasswordResetDto;
 import beyond.ordersystem.member.dto.MemberResDto;
-import beyond.ordersystem.ordering.domain.Ordering;
-import beyond.ordersystem.ordering.service.OrderingService;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,15 +30,11 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Ordering> orderings;
-
     public MemberResDto fromEntity(){
         return MemberResDto.builder()
                 .id(this.id)
                 .name(this.name)
                 .email(this.email)
-                .orderCount(this.orderings.size())
                 .address(this.address)
                 .build();
     }

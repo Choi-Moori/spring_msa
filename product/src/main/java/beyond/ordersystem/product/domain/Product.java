@@ -1,7 +1,6 @@
 package beyond.ordersystem.product.domain;
 
 import beyond.ordersystem.common.domain.BaseTimeEntity;
-import beyond.ordersystem.ordering.domain.OrderDetail;
 import beyond.ordersystem.product.dto.ProductResDto;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,9 +22,6 @@ public class Product extends BaseTimeEntity {
     private Integer price;
     private Integer stockQuantity;
     private String imagePath;
-
-    @OneToMany(mappedBy = "product" , cascade = CascadeType.ALL)
-    private List<OrderDetail> orderDetailList;
 
     public ProductResDto toEntity(){
         return ProductResDto.builder()

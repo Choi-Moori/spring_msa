@@ -28,8 +28,8 @@ dependencies {
 //	dto값 검증을 위한 어노테이션들 제공
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
@@ -43,7 +43,19 @@ dependencies {
 	implementation 'software.amazon.awssdk:s3:2.17.58'
 //	동시성 제어를 위한 이벤트 기반 RabbitMq를 사용하기 위한 RabbitMq 의존성 추가
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-//	sse 라이브러리 : 알림을 사용하기 위한 라이브러리.
+
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}
+
+// 스프링 클라우드에 대한 버전 지정
+ext{
+	set('springCloudVersion', '2021.0.8')
+}
+
+dependencyManagement {
+	imports{
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 tasks.named('test') {

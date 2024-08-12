@@ -1,7 +1,6 @@
 package beyond.ordersystem.product.service;
 
 import beyond.ordersystem.common.service.StockInventoryService;
-import beyond.ordersystem.ordering.dto.StockDecreaseEvent;
 import beyond.ordersystem.product.domain.Product;
 import beyond.ordersystem.product.dto.ProductCreateReqDto;
 import beyond.ordersystem.product.dto.ProductResDto;
